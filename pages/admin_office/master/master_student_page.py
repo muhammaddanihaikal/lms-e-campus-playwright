@@ -2,7 +2,7 @@ from playwright.sync_api import Page
 import re
 from config.config import BASE_URL
 
-class AddStudentPage:
+class MasterStudentPage:
     def __init__(self, page: Page):
         self.page = page
 
@@ -10,6 +10,8 @@ class AddStudentPage:
         self.master_menu = page.locator("div").filter(has_text=re.compile(r"^Master$")).nth(1)
         self.master_student_menu = page.locator("a").filter(has_text="Master Student")
         self.add_new_student_btn = page.get_by_role("button", name="Add New Student")
+        self.details_btn = page.get_by_role("button", name="Details")
+        self.delete_btn = page.get_by_role("button", name="Delete")
 
         # 1. Informasi Pribadi
         self.full_name = page.get_by_role("textbox", name="Full Name")
@@ -110,3 +112,20 @@ class AddStudentPage:
 
         # Kirim data
         self.submit_btn.click()
+
+    def delete_first_student(self):
+        # Navigasi ke Master Student (tanpa klik Add New)
+        self.master_menu.click()
+        self.master_student_menu.click()
+        
+        # Klik Details pada data pertama
+        self.details_btn.first.click()
+        
+        # Dengarkan dialog konfirmasi (otomatis klik OK/Accept)
+        self.page.once("dialog", lambda dialog: dialog.accept())
+        
+        # Klik Delete
+        self.delete_btn.click()
+        
+        # Tunggu sampai proses selesai (network idle)
+        self.page.wait_for_load_state("networkidle")
