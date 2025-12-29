@@ -6,7 +6,7 @@ from data.login_data import LoginData
 def test_delete_student():
     with sync_playwright() as p:
         # Buka browser
-        browser = p.chromium.launch(headless=False) # Kita pasang False supaya bisa lihat prosesnya
+        browser = p.chromium.launch(headless=True) # Kita pasang True supaya running di background
         page = browser.new_page()
 
         # 1. Login sebagai Admin Office
@@ -18,10 +18,11 @@ def test_delete_student():
         master_student = MasterStudentPage(page)
         
         # 3. Jalankan fungsi Delete
-        # Ini akan otomatis navigasi, klik details, dan accept dialog OK
-        print("Memulai proses hapus siswa...")
-        master_student.delete_first_student()
-        print("Proses hapus selesai.")
+        master_student.navigate()
+        
+        # Contoh: Hapus siswa berdasarkan nama tertentu yang ada di list
+        master_student.delete("Lala") 
+
 
         # Validasi (Opsional: beri waktu sebentar untuk melihat hasilnya sebelum close)
         page.wait_for_timeout(3000)
