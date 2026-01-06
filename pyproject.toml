@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "lms-playwright"
+version = "0.1.0"
+description = "LMS E-Campus Automation with Playwright Python"
+authors = ["muhammaddanihaikal"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+playwright = "^1.57.0"
+faker = "^39.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.2"
+pytest-playwright = "^0.7.2"
+pytest-base-url = "^2.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
