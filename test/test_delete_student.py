@@ -1,30 +1,26 @@
-from playwright.sync_api import sync_playwright
 from pages.login_page import LoginPage
-from pages.admin_office.master.master_student_page import MasterStudentPage
+from pages.admin_office.master.master_student_page.master_student_page import MasterStudentPage
 from data.login_data import LoginData
+from data.add_student_data import add_student_data
 
-def test_delete_student():
-    with sync_playwright() as p:
-        # Buka browser
-        browser = p.chromium.launch(headless=True) # Kita pasang True supaya running di background
-        page = browser.new_page()
+def test_delete_student(page):
+    # 1. Login sebagai Admin Office
+    login = LoginPage(page)
+    login.open()
+    login.login(LoginData.adminoffice)
+    
+    # 2. Inisialisasi halaman Master Student
+    master_student = MasterStudentPage(page)
+    master_student.navigate()
+    
+    # 3. Buat siswa baru untuk dihapus agar test mandiri
+    data = add_student_data()
+    master_student.add(data)
+    
+    # 4. Jalankan fungsi Delete berdasarkan nama siswa yang baru dibuat
+    master_student.delete(data["full_name"]) 
 
-        # 1. Login sebagai Admin Office
-        login = LoginPage(page)
-        login.open()
-        login.login(LoginData.adminoffice)
-        
-        # 2. Inisialisasi halaman Master Student
-        master_student = MasterStudentPage(page)
-        
-        # 3. Jalankan fungsi Delete
-        master_student.navigate()
-        
-        # Contoh: Hapus siswa berdasarkan nama tertentu yang ada di list
-        master_student.delete("Lala") 
-
-
-        # Validasi (Opsional: beri waktu sebentar untuk melihat hasilnya sebelum close)
-        page.wait_for_timeout(3000)
-
-        browser.close()
+    # Validasi (Opsional)
+    from playwright.sync_api import expect
+    # Pastikan nama siswa tersebut sudah tidak ada lagi di halaman
+    expect(page.get_by_text(data["full_name"])).not_to_be_visible()

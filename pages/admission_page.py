@@ -1,7 +1,6 @@
 from playwright.sync_api import Page
 from config.config import BASE_URL
 
-
 class AdmissionPage:
     def __init__(self, page: Page):
         self.page = page

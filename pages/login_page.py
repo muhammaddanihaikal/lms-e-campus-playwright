@@ -17,3 +17,5 @@ class LoginPage:
         self.username.fill(data["username"])
         self.password.fill(data["password"])
         self.login_btn.click()
+        self.page.wait_for_url("**/Adminoffice", timeout=10000)
+        self.page.wait_for_load_state("networkidle")
