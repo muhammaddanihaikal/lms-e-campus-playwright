@@ -1,7 +1,7 @@
 from pages.login_page import LoginPage
-from pages.admin_office.master.master_student_page.master_student_page import MasterStudentPage
+from pages.admin_office.master.master_student.master_student_page import MasterStudentPage
 from data.login_data import LoginData
-from data.add_student_data import add_student_data
+from data.student_data import student_data
 
 def test_edit_student_details(page):
     # 1. Login
@@ -14,7 +14,7 @@ def test_edit_student_details(page):
     master_student.navigate()
     
     # 3. Buat siswa baru untuk diedit
-    data = add_student_data()
+    data = student_data()
     master_student.add(data)
     
     # 4. Update data dengan nilai baru yang berbeda

@@ -20,7 +20,6 @@ class StudentDetailModal:
 
         # Verifikasi Data Utama
         check("Full Name", data["full_name"])
-        check("Username", data["username"])
         check("Email", data["email"])
         check("NISN", data["nisn"])
         

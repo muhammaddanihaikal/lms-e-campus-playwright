@@ -1,5 +1,5 @@
 from pages.login_page import LoginPage
-from pages.admin_office.master.master_student_page.master_student_page import MasterStudentPage
+from pages.admin_office.master.master_student.master_student_page import MasterStudentPage
 from data.login_data import LoginData
 from data.student_data import student_data
 

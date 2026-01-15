@@ -5,12 +5,14 @@ from datetime import datetime
 fake = Faker('id_ID')
 
 def student_data():
-    name = f"studentex{random.randint(100, 999)}"
-    email = f"{name}@example.com"
+    base_name = fake.first_name().lower()
+    username = f"{base_name}bis"
+    email = f"{username}@gmail.com"
+    full_name = f"{base_name.capitalize()} BIS"
 
     return {
         # Informasi Pribadi
-        "full_name": name,
+        "full_name": full_name,
         "email": email,
         "nisn": fake.numerify(text='##########'),
         "gender": random.choice(["Male", "Female"]),
@@ -36,8 +38,8 @@ def student_data():
         "education_level": "Senior High School (SMA/SMK)",
 
         # Informasi Akademik
-        "study_program": "44", # Artificial Intelligence
-        "entry_year": str(datetime.now().year),
+        "study_program": "Business Information Systems",
+        "entry_year": "2026",
         "degree": "S1 (Bachelor)",
         "current_semester": "1",
         "class_type": "Regular",
@@ -45,6 +47,6 @@ def student_data():
         "status": "active",
 
         # account
-        "username": name,
+        "username": username,
         "password": "12345678"
     }

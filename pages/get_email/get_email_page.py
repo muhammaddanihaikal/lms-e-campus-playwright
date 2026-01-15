@@ -27,6 +27,11 @@ class GetEmailPage:
     
     def open_lecturer_tab(self):
         self.lecturer_tab_btn.click()
+        # Ensure it's active as there's a risk of double-click or transition lag
+        if self.lecturer_tab_btn.get_attribute("aria-selected") != "true":
+            self.lecturer_tab_btn.click()
+        # Tunggu sampai field email di tab lecturer muncul
+        self.lecturer.email_field.wait_for(state="visible")
     
     def open_kaprodi_tab(self):
         self.kaprodi_tab_btn.click()

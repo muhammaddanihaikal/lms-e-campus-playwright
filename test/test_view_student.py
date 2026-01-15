@@ -1,7 +1,7 @@
 from pages.login_page import LoginPage
-from pages.admin_office.master.master_student_page.master_student_page import MasterStudentPage
+from pages.admin_office.master.master_student.master_student_page import MasterStudentPage
 from data.login_data import LoginData
-from data.add_student_data import add_student_data
+from data.student_data import student_data
 
 def test_view_student_details(page):
     # 1. Login sebagai Admin Office
@@ -16,7 +16,7 @@ def test_view_student_details(page):
     master_student.navigate()
     
     # 4. Buat data siswa baru untuk dites
-    data = add_student_data()
+    data = student_data()
     master_student.add(data)
     
     # 5. Buka detail dan verifikasi

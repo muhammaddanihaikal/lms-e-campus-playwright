@@ -2,7 +2,7 @@ from playwright.sync_api import expect
 import re
 from data.login_data import LoginData
 from pages.login_page import LoginPage
-from pages.admin_office.master.master_kaprodi_page.master_kaprodi_page import MasterKaprodiPage
+from pages.admin_office.master.master_kaprodi.master_kaprodi_page import MasterKaprodiPage
 from data.kaprodi_data import kaprodi_data
 
 def test_add_kaprodi(page):

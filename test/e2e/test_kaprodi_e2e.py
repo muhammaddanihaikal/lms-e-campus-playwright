@@ -10,23 +10,27 @@ def test_pendaftaran_kaprodi(page):
     login = LoginPage(page)
     login.open()
     login.login(LoginData.adminoffice)
-
-    # tambah kaprodi
+    
     master_kaprodi = MasterKaprodiPage(page)
     master_kaprodi.navigate()
+
+    # tambah kaprodi
     data = kaprodi_data()
     kaprodi_id = master_kaprodi.add(data)
     
-    # search & logout
+    # validasi
     master_kaprodi.search(kaprodi_id)
     navbar = NavBarPage(page)
+
+    # logout
     navbar.logout()
 
-    # get email & verifikasi
+    # buka tab kaprodi
     get_email = GetEmailPage(page)
     get_email.open()
     get_email.open_kaprodi_tab()
     
+    # verifikasi
     get_email.kaprodi.verify({
         "email": data["email"],
         "employee_id": kaprodi_id

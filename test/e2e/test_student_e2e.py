@@ -3,6 +3,7 @@ from pages.admin_office.master.master_student.master_student_page import MasterS
 from data.login_data import LoginData
 from data.student_data import student_data
 from pages.get_email.get_email_page import GetEmailPage
+from pages.navbar_page import NavBarPage
 
 def test_master_student_e2e(page):
     # 1. Login sebagai Admin Office
@@ -34,21 +35,32 @@ def test_pendaftaran_mahasiswa(page):
     master_student = MasterStudentPage(page)
     master_student.navigate()
     
-    # Tambah Mahasiswa Baru dan dapatkan NIM hasil generate
+    # tambah mahasiswa
     data = student_data()
     student_id = master_student.add(data)
     
-    # Simulasi Logout (Clear Storage & Cookies)
-    page.context.clear_cookies()
-    page.evaluate("window.localStorage.clear()")
-    page.evaluate("window.sessionStorage.clear()")
+    # logout
+    navbar = NavBarPage(page)
+    navbar.logout()
     
-    # Navigasi ke halaman Get Email
+    # buka tab student
     get_email = GetEmailPage(page)
-    get_email.navigate()
+    get_email.open()
+    get_email.open_student_tab()
     
-    # Verifikasi Mahasiswa menggunakan tab Student
-    get_email.student.verify(data["email"], student_id)
+    # verifikasi
+    get_email.student.verify(
+        {
+            "email": data["email"], 
+            "student_id": student_id
+        }
+    )
     
-    # Pembuatan Akun Kampus
-    get_email.create_account(data["username"], "12345678")
+    # buat akun
+    get_email.student.create_account(
+        {
+            "username": data["username"],
+            "password": "12345678",
+            "confirm_password": "12345678"
+        }
+    )

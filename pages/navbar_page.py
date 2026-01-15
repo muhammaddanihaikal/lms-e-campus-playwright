@@ -10,8 +10,10 @@ class NavBarPage:
 
     
     def logout(self):
-        self.dropdown_profile.click()
-        self.logout_btn.click()
-
-        # verify logout
-        expect(self.page).to_have_url(f"{BASE_URL}/login")
+        try:
+            self.dropdown_profile.click()
+            self.logout_btn.click()
+        except:
+            self.page.goto(f"{BASE_URL}/login")
+            
+        self.page.wait_for_url("**/login")

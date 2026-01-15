@@ -6,7 +6,7 @@ fake = Faker('id_ID')
 
 def kaprodi_data():
     name = f"kaprodiex{random.randint(100, 999)}"
-    email = f"{name}@example.com"
+    email = f"{name}@gmail.com"
     
     return {
         "kaprodi_name": name,

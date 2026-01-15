@@ -5,19 +5,21 @@ from config.config import BASE_DIR
 fake = Faker('id_ID')
 
 def admission_data():
-    generated_name = fake.name()
-    generated_email = f"{generated_name.replace(' ', '').replace('.', '').lower()}{random.randint(100, 9999)}@gmail.com"
+    base_name = fake.first_name().lower()
+    username = f"{base_name}bis"
+    email = f"{username}@gmail.com"
+    full_name = f"{base_name.capitalize()} BIS"
 
     return {
         # ===== Data Pribadi =====
-        "full_name": generated_name,
+        "full_name": full_name,
         "nisn": fake.numerify(text='##########'),  # 10 digit nomor acak
         "gender": random.choice(["Male", "Female"]),
         "religion": "Islam", 
         "place_of_birth": fake.city(),
         "date_of_birth": fake.date_of_birth(minimum_age=15, maximum_age=19).strftime("%Y-%m-%d"),
         "address": fake.address(),
-        "email": generated_email,
+        "email": email,
         "phone": fake.phone_number(),
 
         # ===== Orang Tua / Wali =====
@@ -36,7 +38,8 @@ def admission_data():
         "education_level": "Senior High School (SMA/SMK)",
 
         # ===== Pilihan Program Studi =====
-        "study_program": "56",
+        "study_program": "Business Information Systems (ISBIS) - S1",
+        "entry_year": "2026",
         "class_type": "Regular",
         "entry_path": "regular",
 
