@@ -6,7 +6,6 @@ class AddStudentModal:
         
         # Informasi Pribadi
         self.full_name = page.get_by_role("textbox", name="Full Name")
-        self.username = page.get_by_role("textbox", name="Username") 
         self.email = page.get_by_role("textbox", name="Personal Email")
         self.nisn = page.get_by_role("textbox", name="National Student ID (NISN)")
         self.gender = page.get_by_label("Gender")
@@ -48,7 +47,6 @@ class AddStudentModal:
     def fill_form(self, data):
         # Informasi Pribadi
         self.full_name.fill(data["full_name"])
-        self.username.fill(data["username"])
         self.email.fill(data["email"])
         self.nisn.fill(data["nisn"])
         self.gender.select_option(data["gender"])

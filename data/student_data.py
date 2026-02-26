@@ -5,7 +5,7 @@ from datetime import datetime
 fake = Faker('id_ID')
 
 def student_data():
-    base_name = fake.first_name().lower()
+    base_name = f"{fake.first_name().lower()}"
     username = f"{base_name}bis"
     email = f"{username}@gmail.com"
     full_name = f"{base_name.capitalize()} BIS"
