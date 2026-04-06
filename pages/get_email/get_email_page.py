@@ -1,8 +1,11 @@
 from playwright.sync_api import Page, expect
+
 from config.config import BASE_URL
-from .components.student_tab import StudentTab
-from .components.lecturer_tab import LecturerTab
+
 from .components.kaprodi_tab import KaprodiTab
+from .components.lecturer_tab import LecturerTab
+from .components.student_tab import StudentTab
+
 
 class GetEmailPage:
     def __init__(self, page: Page):
@@ -18,13 +21,13 @@ class GetEmailPage:
         self.student = StudentTab(self.page)
         self.lecturer = LecturerTab(self.page)
         self.kaprodi = KaprodiTab(self.page)
-        
+
     def open(self):
         self.get_your_email_btn.click()
-    
+
     def open_student_tab(self):
         self.student_tab_btn.click()
-    
+
     def open_lecturer_tab(self):
         self.lecturer_tab_btn.click()
         # Ensure it's active as there's a risk of double-click or transition lag
@@ -32,6 +35,6 @@ class GetEmailPage:
             self.lecturer_tab_btn.click()
         # Tunggu sampai field email di tab lecturer muncul
         self.lecturer.email_field.wait_for(state="visible")
-    
+
     def open_kaprodi_tab(self):
         self.kaprodi_tab_btn.click()

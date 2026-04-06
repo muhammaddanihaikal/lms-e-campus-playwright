@@ -30,6 +30,11 @@ class AddLecturerModal:
         self.phone_number.fill(data["phone_number"])
 
         self.generate_btn.click()
+        # Wait for employee_id to have a value (it should not be empty after generate)
+        self.page.wait_for_function(
+            "(input) => input.value !== ''",
+            arg=self.employee_id.element_handle()
+        )
         employee_id = self.employee_id.input_value()
 
         # Fill Entry Year only if visible

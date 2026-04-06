@@ -5,10 +5,10 @@ from datetime import datetime
 fake = Faker('id_ID')
 
 def lecturer_data():
-    base_name = fake.first_name().lower()
-    username = f"{base_name}BIS"
-    email = f"{base_name}@gmail.com"
-    full_name = f"{base_name.capitalize()} BIS"
+    base_name = fake.first_name().lower()[:5]  # Max 5 huruf
+    username = f"{base_name}es"
+    email = f"{username}@gmail.com"
+    full_name = f"Dosen {base_name.capitalize()} ES"
     
     return {
         "lecturer_name": full_name,
@@ -20,7 +20,7 @@ def lecturer_data():
         "date_of_birth": fake.date_of_birth(minimum_age=25, maximum_age=60).strftime("%Y-%m-%d"),
         "place_of_birth": fake.city(),
         "faculty": "School of Information Systems",
-        "department": "Business Information Systems",
+        "department": "Enterprise Systems",
 
         # account
         "username": username,

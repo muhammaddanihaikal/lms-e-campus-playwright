@@ -30,6 +30,11 @@ class AddKaprodiModal:
         self.phone_number.fill(data["phone_number"])
 
         self.generate_btn.click()
+        # Wait for employee_id to have a value (it should not be empty after generate)
+        self.page.wait_for_function(
+            "(input) => input.value !== ''",
+            arg=self.employee_id.element_handle()
+        )
         employee_id = self.employee_id.input_value()
 
         self.entry_year.fill(data["entry_year"])
@@ -40,6 +45,7 @@ class AddKaprodiModal:
         self.status.select_option("Active")
 
         self.faculty.select_option(label=data["faculty"])
+        self.page.wait_for_timeout(1000) # Wait for department to load
         self.department.wait_for(state="visible")
         self.department.select_option(label=data["department"])
         

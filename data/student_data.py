@@ -5,13 +5,13 @@ from datetime import datetime
 fake = Faker('id_ID')
 
 def student_data():
-    base_name = f"{fake.first_name().lower()}"
-    username = f"{base_name}bis"
+    base_name = f"{fake.first_name().lower()}"[:5]  # Max 5 huruf
+    username = f"{base_name}es"
     email = f"{username}@gmail.com"
-    full_name = f"{base_name.capitalize()} BIS"
+    full_name = f"{base_name.capitalize()} ES"
 
     return {
-        # Informasi Pribadi
+        # Personal Info Tab
         "full_name": full_name,
         "email": email,
         "nisn": fake.numerify(text='##########'),
@@ -22,29 +22,22 @@ def student_data():
         "phone": fake.phone_number(),
         "address": fake.address(),
 
-        # Informasi Orang Tua/Wali
+        # Family & Emergency Tab
         "parent_name": fake.name(),
         "parent_phone": fake.phone_number(),
-        "parent_email": fake.email(),
-
-        # Kontak Darurat
-        "emergency_name": fake.name(),
-        "emergency_phone": fake.phone_number(),
+        "contact_name": fake.name(),
+        "contact_phone": fake.phone_number(),
         "relationship": "Parent",
 
-        # Latar Belakang Pendidikan
+        # Education & Academic Tab
         "high_school": f"SMA {fake.city()}",
-        "graduation_year": "2024",
-        "education_level": "Senior High School (SMA/SMK)",
-
-        # Informasi Akademik
-        "study_program": "Business Information Systems",
-        "entry_year": "2026",
+        "grad_year": "2024",
+        "prev_education": "Senior High School (SMA/SMK)",
+        "department": "49",
+        "semester": "1",
         "degree": "S1 (Bachelor)",
-        "current_semester": "1",
         "class_type": "Regular",
-        "entry_path": "regular",
-        "status": "active",
+        "entry_path": "Regular",
 
         # account
         "username": username,

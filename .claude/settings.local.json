@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(poetry install:*)",
+      "Bash(python:*)",
+      "Bash(curl:*)",
+      "Bash(poetry run pytest:*)",
+      "Bash(poetry run python:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(attrib:*)",
+      "Bash(xargs:*)",
+      "Bash(poetry run playwright codegen:*)",
+      "Bash(playwright codegen:*)",
+      "Bash(for:*)",
+      "Bash(do:*)",
+      "Bash(done)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}

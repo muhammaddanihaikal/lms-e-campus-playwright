@@ -28,8 +28,8 @@ class MasterStudentPage:
     
     def add(self, data):
         self.add_new_student_btn.click()
-        # Wait for modal to appear
-        self.add_student_modal.full_name.wait_for(state="visible")
+        # Wait for modal to appear (tunggu tab Personal Info muncul)
+        self.add_student_modal.tab_personal.wait_for(state="visible")
         nim = self.add_student_modal.fill_form(data)
         self.add_student_modal.submit()
         return nim

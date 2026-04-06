@@ -15,6 +15,7 @@ class AddCourseModal:
         self.department = page.get_by_label("Department")
         self.semester = page.get_by_label("Semester")
         self.credits = page.get_by_role("spinbutton", name="Credits")
+        self.credits_distribution = page.get_by_label("Credit Distribution (Lecture + Lab)")
         self.status = page.get_by_label("Status")
 
         # assessment indicators
@@ -64,6 +65,7 @@ class AddCourseModal:
         self.faculty.select_option(label=data["faculty"])
         self.department.select_option(label=data["department"])
         self.semester.select_option(label=data["semester"])
+        self.credits_distribution.select_option(index=data["credits_distribution"])
         self.status.select_option(label=data["status"])
         
         # assessment indicators

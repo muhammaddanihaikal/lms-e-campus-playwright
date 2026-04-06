@@ -8,6 +8,15 @@ class StudentDetailModal:
 
     def edit(self):
         self.edit_btn.click()
+    
+    def delete(self):
+        self.page.once("dialog", lambda dialog: dialog.accept())
+        self.delete_btn.click()
+    def close(self):
+        # Tutup Modal
+        self.page.keyboard.press("Escape")
+        # Tunggu sampai modal tertutup (text Student Information hilang)
+        self.page.get_by_text("Student Information").wait_for(state="hidden")
 
     def verify_details(self, data):
         # 1. Pastikan modal sudah terbuka
@@ -26,12 +35,5 @@ class StudentDetailModal:
         # Student ID (Cukup cek kalau ada label 'Student ID')
         expect(self.page.get_by_text("Student ID").first).to_be_visible()
         
-    def close(self):
-        # Tutup Modal
-        self.page.keyboard.press("Escape")
-        # Tunggu sampai modal tertutup (text Student Information hilang)
-        self.page.get_by_text("Student Information").wait_for(state="hidden")
 
-    def delete(self):
-        self.page.once("dialog", lambda dialog: dialog.accept())
-        self.delete_btn.click()
+

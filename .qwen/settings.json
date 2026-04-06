@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(poetry *)",
+      "Bash(playwright *)",
+      "Bash(python *)",
+      "Bash(mkdir *)"
+    ]
+  },
+  "$version": 3
+}

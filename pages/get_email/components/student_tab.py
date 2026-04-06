@@ -8,15 +8,15 @@ class StudentTab:
         self.panel = page.get_by_role("tabpanel", name="Student")
 
         # verify
-        self.email = self.panel.get_by_role("textbox", name="Personal Email Address *")
-        self.student_id = self.panel.get_by_role("textbox", name="Student ID (NIM) *")
+        self.email = self.panel.get_by_role("textbox", name="Personal Email Address")
+        self.student_id = self.panel.get_by_role("textbox", name="Student ID (NIM)")
         self.verify_btn = self.panel.get_by_role("button", name="Verify Student Record")
         self.verify_success_alert = self.panel.get_by_role("alert").filter(has_text="Student Verified Successfully!")
 
         # create account
-        self.username = self.panel.get_by_role("textbox", name="Choose Username *")
-        self.password = self.panel.get_by_role("textbox", name="Create Password *")
-        self.confirm_password = self.panel.get_by_role("textbox", name="Confirm Password *")
+        self.username = self.panel.get_by_role("textbox", name="Choose Username")
+        self.password = self.panel.get_by_role("textbox", name="Create Password")
+        self.confirm_password = self.panel.get_by_role("textbox", name="Confirm Password")
         self.create_account_btn = self.panel.get_by_role("button", name="Create Campus Account")
         self.create_success_alert = self.page.get_by_text("Registration Successful!")
 

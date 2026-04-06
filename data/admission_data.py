@@ -6,9 +6,9 @@ fake = Faker('id_ID')
 
 def admission_data():
     base_name = fake.first_name().lower()
-    username = f"{base_name}bis"
+    username = f"{base_name}es"
     email = f"{username}@gmail.com"
-    full_name = f"{base_name.capitalize()} BIS"
+    full_name = f"{base_name.upper()} ES"
 
     return {
         # ===== Data Pribadi =====
@@ -38,7 +38,7 @@ def admission_data():
         "education_level": "Senior High School (SMA/SMK)",
 
         # ===== Pilihan Program Studi =====
-        "study_program": "Business Information Systems (ISBIS) - S1",
+        "study_program": "Dept. of Software Engineering (SE-FCS-101) - S1",
         "entry_year": "2026",
         "class_type": "Regular",
         "entry_path": "regular",

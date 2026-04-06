@@ -17,7 +17,7 @@ class LecturerTab:
         self.password_field = self.panel.get_by_role("textbox", name="Create Password *")
         self.confirm_password_field = self.panel.get_by_role("textbox", name="Confirm Password *")
         self.create_account_btn = self.panel.get_by_role("button", name="Create Campus Account")
-        self.create_success_alert = self.panel.get_by_text("Registration Successful!")
+        self.create_success_alert = self.page.get_by_text("Registration Successful!")
 
     def verify(self, data):
         self.email_field.fill(data["email"])

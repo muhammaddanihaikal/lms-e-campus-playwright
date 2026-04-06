@@ -1,4 +1,5 @@
 [tool.poetry]
+package-mode = false
 name = "lms-playwright"
 version = "0.1.0"
 description = "LMS E-Campus Automation with Playwright Python"
@@ -14,6 +15,11 @@ faker = "^39.0.0"
 pytest = "^9.0.2"
 pytest-playwright = "^0.7.2"
 pytest-base-url = "^2.1.0"
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
+python_files = "test_*.py"
+python_functions = "test_*"
 
 [build-system]
 requires = ["poetry-core"]
