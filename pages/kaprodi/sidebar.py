@@ -1,13 +1,13 @@
-"""
-Sidebar Navigation POM for Kaprodi
-"""
+"""KaprodiSidebar — komponen sidebar navigasi role Kaprodi."""
 
 from playwright.sync_api import Page
 
+from pages.base_page import BasePage
 
-class KaprodiSidebar:
+
+class KaprodiSidebar(BasePage):
     def __init__(self, page: Page):
-        self.page = page
+        super().__init__(page)
 
         # Main Menu Items
         self.dashboard_menu = page.get_by_text("Dashboard", exact=True)

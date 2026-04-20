@@ -1,0 +1,22 @@
+{
+  "admin_office": {
+    "username": "newadmin",
+    "password": "admin123"
+  },
+  "student": {
+    "username": "limanes",
+    "password": "12345678"
+  },
+  "student_alt": {
+    "username": "karenes",
+    "password": "12345678"
+  },
+  "lecturer": {
+    "username": "vinoes",
+    "password": "12345678"
+  },
+  "kaprodi": {
+    "username": "kaprodies",
+    "password": "12345678"
+  }
+}

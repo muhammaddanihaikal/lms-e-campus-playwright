@@ -1,0 +1,18 @@
+{
+  "wrong_password": {
+    "username": "newadmin",
+    "password": "salahbanget"
+  },
+  "unknown_user": {
+    "username": "tidakada123",
+    "password": "12345678"
+  },
+  "empty_username": {
+    "username": "",
+    "password": "12345678"
+  },
+  "empty_password": {
+    "username": "newadmin",
+    "password": ""
+  }
+}

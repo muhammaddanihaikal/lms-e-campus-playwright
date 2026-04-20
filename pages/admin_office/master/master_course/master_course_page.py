@@ -1,9 +1,12 @@
 from playwright.sync_api import Page, expect
+
+from pages.base_page import BasePage
 from .components.add_course_modal import AddCourseModal
 
-class MasterCoursePage:
+
+class MasterCoursePage(BasePage):
     def __init__(self, page: Page):
-        self.page = page
+        super().__init__(page)
         self.master_menu = page.get_by_text("Master", exact=True).first
         self.master_course_menu = page.get_by_text("Master Course", exact=True).first
         self.add_course_btn = page.get_by_role("button", name="Add Course")

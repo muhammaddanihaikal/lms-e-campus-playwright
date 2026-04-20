@@ -1,9 +1,12 @@
 from playwright.sync_api import Page, expect
+
+from pages.base_page import BasePage
 from .components.add_lecturer_modal import AddLecturerModal
 
-class MasterLecturerPage:
+
+class MasterLecturerPage(BasePage):
     def __init__(self, page: Page):
-        self.page = page
+        super().__init__(page)
         # locators
         self.master_menu = page.get_by_text("Master", exact=True).first
         self.master_lecturer_menu = page.get_by_text("Master Lecturer", exact=True).first

@@ -1,13 +1,16 @@
 from playwright.sync_api import Page, expect
 from config.config import BASE_URL
 from datetime import datetime
+
+from pages.base_page import BasePage
 from .components.add_student_modal import AddStudentModal
 from .components.edit_student_modal import EditStudentModal
 from .components.student_detail_modal import StudentDetailModal
 
-class MasterStudentPage:
+
+class MasterStudentPage(BasePage):
     def __init__(self, page: Page):
-        self.page = page
+        super().__init__(page)
 
         # Components
         self.add_student_modal = AddStudentModal(page)

@@ -1,9 +1,12 @@
 from playwright.sync_api import Page, expect
+
+from pages.base_page import BasePage
 from .components.add_kaprodi_modal import AddKaprodiModal
 
-class MasterKaprodiPage:
+
+class MasterKaprodiPage(BasePage):
     def __init__(self, page: Page):
-        self.page = page
+        super().__init__(page)
         # locators
         self.master_menu = page.get_by_text("Master", exact=True).first
         self.master_kaprodi_menu = page.get_by_text("Master Kaprodi", exact=True).first
